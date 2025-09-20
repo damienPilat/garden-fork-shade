@@ -1,7 +1,12 @@
 import React from "react";
 import styles from "./SingleApplication.module.css";
+import {TApplication} from "../../types/types.ts";
 
-const SingleApplication = ({ application }) => {
+type SingleApplicationProps = {
+  application: TApplication
+}
+
+const SingleApplication = ({application}: SingleApplicationProps) => {
   return (
     <div className={styles.SingleApplication}>
       <div className={styles.cell}>
