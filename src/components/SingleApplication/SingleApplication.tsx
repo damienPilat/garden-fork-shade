@@ -7,6 +7,14 @@ type SingleApplicationProps = {
 }
 
 const SingleApplication = ({application}: SingleApplicationProps) => {
+  const formatAmount = (amount:number) => {
+    return `£${(amount / 100).toFixed(2)}`;
+  };
+
+  const formatDate = (date: Date) => {
+    return new Intl.DateTimeFormat('en-GB').format(new Date(date));
+  }
+
   return (
     <div className={styles.SingleApplication}>
       <div className={styles.cell}>
@@ -19,19 +27,19 @@ const SingleApplication = ({application}: SingleApplicationProps) => {
       </div>
       <div className={styles.cell}>
         <sub>Email</sub>
-        {application.email}
+        <span className={styles.cellEmail}>{application.email}</span>
       </div>
       <div className={styles.cell}>
         <sub>Loan Amount</sub>
-        {application.loan_amount}
+        {formatAmount(application.loan_amount)}
       </div>
       <div className={styles.cell}>
         <sub>Application Date</sub>
-        {application.date_created}
+        {formatDate(application.date_created)}
       </div>
       <div className={styles.cell}>
         <sub>Expiry date</sub>
-        {application.expiry_date}
+        {formatDate(application.expiry_date)}
       </div>
     </div>
   );
